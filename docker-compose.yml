@@ -11,14 +11,14 @@ services:
       - db
 
   db:
-    image: postgressql 
+    image: postgres
     restart: always
     volumes:
       - ./docker-volumes/db:/var/lib/postgresql/data
     ports:
       - 3306:3306
     environment:
-      POSTGRESS_PASSWORD: example
+      POSTGRES_PASSWORD: example
       POSTGRES_USER: api-backend
     security_opt:
       - seccomp:unconfined
