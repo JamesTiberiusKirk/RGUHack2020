@@ -11,7 +11,7 @@ services:
       - db
 
   db:
-    image: postgressql 
+    image: postgres
     restart: always
     volumes:
       - ./docker-volumes/db:/var/lib/postgresql/data
