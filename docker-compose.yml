@@ -10,15 +10,17 @@ services:
       - db
 
   db:
-    image: postgres
-    restart: always
+    image: mysql
     volumes:
-      - ./docker-volumes/db:/var/lib/postgresql/data
+      - ./docker-volumes/db:/var/lib/mysql
     ports:
-      - 5432:5432 
+      - 3306:3306
+    restart: always
     environment:
-      POSTGRES_PASSWORD: example
-      POSTGRES_USER: api-backend
-      POSTGRES_DB: plzhireus
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ROOT_PASSWORD: "rootpwd"
+      MYSQL_USER: "api-backend"
+      MYSQL_PASSWORD: "example"
+      MYSQL_DATABASE: "plzhireus"
     security_opt:
       - seccomp:unconfined
