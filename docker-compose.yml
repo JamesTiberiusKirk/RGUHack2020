@@ -1,6 +1,5 @@
 version: "3.7"
 
-
 services:
   api:
     build: ./api/
@@ -16,7 +15,7 @@ services:
     volumes:
       - ./docker-volumes/db:/var/lib/postgresql/data
     ports:
-      - 3306:3306
+      - 5432:5432 
     environment:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: api-backend
