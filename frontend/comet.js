@@ -4,6 +4,8 @@ var trailDistance;
 const w = 1920;
 const h = 1080;
 
+
+
 function setup() {
   createCanvas(w, h).parent("comet");
   system = new ParticleSystem(createVector(w/2, 70));
@@ -18,6 +20,9 @@ function draw() {
   particlePositionValue = createVector(random(0, w), 20);
   
   if(system){
+    document.addEventListener("keypress", function(key) {
+        console.log(key);
+    });
     system.addParticle();
     system.run();
   }
