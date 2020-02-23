@@ -1,17 +1,7 @@
-
-import * as Tone from "tone";
-
 var synth = new Tone.Synth().toMaster()
 
 
-function keyListener() {
-
-    window.addEventListener("keydown", keyBinds, false);
-
-}
-
-
-
+document.addEventListener("keypress", keyBinds, false);
 
 function keyBinds(key) {
     var notes = [
@@ -55,7 +45,7 @@ function keyBinds(key) {
         synth.triggerAttackRelease(notes[7]);
     } else if (key.keyCode == "54") {
         synth.triggerAttackRelease(notes[8]);
-    } else if (key.keyCode == "y") {
+    } else if (key.keyCode == "89") {
         synth.triggerAttackRelease(notes[9]);
     } else if (key.keyCode == "55") {
         synth.triggerAttackRelease(notes[10]);
