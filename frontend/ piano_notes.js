@@ -1,7 +1,10 @@
 var synth = new Tone.Synth().toMaster()
 
 
+
+
 document.addEventListener("keypress", keyBinds, false);
+
 
 function keyBinds(key) {
     var notes = [
