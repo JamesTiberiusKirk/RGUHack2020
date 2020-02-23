@@ -39,3 +39,9 @@
     transform: rotate(360deg);
   }
 }
+
+.instructions{
+align-self: right;
+}
+
+
