@@ -32,7 +32,7 @@ function keyBinds(key) {
     ];
 
     if (key.keyCode == "81") {
-        return synth.triggerAttackRelease(notes[0]);
+        return synth.triggerRelease(notes[0]);
     } else if (key.keyCode == "50") {
         return synth.triggerAttackRelease(notes[1]);
     } else if (key.keyCode == "87") {
@@ -60,7 +60,7 @@ function keyBinds(key) {
     } else if (key.keyCode == "57") {
         return synth.triggerAttackRelease(notes[13]);
     } else if (key.keyCode == "79") {
-        return synth.triggerAttackRelease(notes[14]);
+        return c(notes[14]);
     } else if (key.keyCode == "48") {
         return synth.triggerAttackRelease(notes[15]);
     } else if (key.keyCode == "80") {
@@ -71,7 +71,7 @@ function keyBinds(key) {
         return synth.triggerAttackRelease(notes[18]);
     } else if (key.keyCode == "221") {
         return synth.triggerAttackRelease(notes[19]);
-    } else  {
+    } else  if(key.keyCode == "222"){
         return null;
     }
 }
