@@ -2,8 +2,9 @@ var synth = new Tone.Synth().toMaster()
 
 
 
-
-document.addEventListener("keypress", keyBinds, false);
+window.addEventListener('keypress', keyBinds, false);
+window.addEventListener('keyup' releaseKey, false);
+//document.addEventListener("keypress", keyBinds, false);
 //document.addEventListener("keydown", keyRelease)
 
 
@@ -71,10 +72,87 @@ function keyBinds(key) {
         return synth.triggerAttackRelease(notes[18]);
     } else if (key.keyCode == "221") {
         return synth.triggerAttackRelease(notes[19]);
+<<<<<<< HEAD
     } else  if(key.keyCode == "222"){
         return null;
+=======
+    } else {
+        
+>>>>>>> ae2496d6dbecfaed420b24d464236af1fe994323
     }
 }
+function releaseKey(key) {
+    var notes = [
+        "F4",
+        "F4SH",
+        "G4",
+        "G4SH",
+        "A4",
+        "A4SH",
+        "B4",
+        "C5",
+        "C5SH",
+        "D5",
+        "D5SH",
+        "E5",
+        "F5",
+        "F5SH",
+        "G5",
+        "G5SH",
+        "A5",
+        "A5SH",
+        "B5",
+        "C6"
+    ];
+
+    if (key.keyCode == "81") {
+        return synth.triggerRelease(); 
+
+    } else if (key.keyCode == "50") {
+        return synth.triggerRelease(); 
+    } else if (key.keyCode == "87") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "51") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "69") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "52") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "82") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "84") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "54") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "89") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "55") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "85") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "73") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "57") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "79") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "48") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "80") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "189") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "219") {
+        return synth.triggerRelease();
+    } else if (key.keyCode == "221") {
+        return synth.triggerRelease();
+    } else {
+        
+    }
+
+
+
+
 
 
 
