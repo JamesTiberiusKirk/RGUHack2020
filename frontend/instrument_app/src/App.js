@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Popup from './Apps/Popup';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-  
-      </header>
-    </div>
-  );
-}
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        
+        <div className="App-header">
+        </div>
+
+        <div className="display-popup">
+
+        </div>
+        
+        
+      </div>
+    );
+  }
+} 
 
 export default App;

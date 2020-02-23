@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 function NavComponent() {
   return (
     <nav class="navbar navbar-dark bg-dark">
-
       <a class="navbar-brand" href="index.html">StarGazer </a>
       <span>
         <a class="navbar-brand" href="#">List available songs</a>
@@ -14,9 +13,7 @@ function NavComponent() {
           <button class="btn btn-success" type="submit">Search</button>
         </form>
       </span>
-
     </nav>
-
   );
 }
 
