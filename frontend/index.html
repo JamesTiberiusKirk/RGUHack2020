@@ -2,59 +2,97 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous"
-  />
-
-  <title>StarGazer</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>StarGazer</title>
 
     <navbar>
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">StarGazer </a>
             <span>
-              <a class="navbar-brand" href="#">List available songs</a>
+                <a class="navbar-brand" href="#">List available songs</a>
             </span>
             <span class="navbar-text">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                <button class="btn btn-success" type="submit">Search</button>
-              </form>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
             </span>
-          </nav>
+        </nav>
     </navbar>
-    
 </head>
-
 <body>
-    
+    <script>
+        $(document).ready(function () {
+            $('#myModal').modal();
+            $('#submit-btn').click(function(){
+                $('#myModal').modal('hide');
 
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="popup"></div>
-  <div id="root"></div>
-  <div id="comet" style="width: 50%;"></div>
-    
+            });
+        });
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+        // function save() {
+        //     $(document).ready(function() {
+        //         $(document).ready(function() {
+        //             $ajax({
+        //                 method: "POST",
+        //                 url: "localhost:3000"
+        //             });
+        //         });
+        //     });
+        // }
+    </script>
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Username</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input class="input-group mb-3"> </input>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submit-btn" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="comet" style="width: 50%;"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.9/Tone.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.min.js"></script>
+    <script src="recording.js"></script>
     <script src="piano_notes.js"></script>
     <script src="comet.js"></script>
-    
-    
+
+    <button id="recordButton"> Record </button>
+    <button id="stopButton"> Stop </button>
+    <button id="pauseButton"> Pause </button>
+
+    <p>
+        <audio id=recordedAudio></audio>
+        <a id=audioDownload></a>
+    </p>
 </body>
 
 </html>

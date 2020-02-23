@@ -4,7 +4,11 @@ var keyTouched;
 
 const w = 1920;
 const h = 1080;
+var gif_createImg;
 
+function preload(){
+    //gif_createImg = createImage("bckground.gif");
+}
 
 
 function setup() {
@@ -18,8 +22,7 @@ function setup() {
 
 function draw() {
     background(51);
-
-    
+    //gif_createImg.position(0,0);
 
     if (system) {
         document.addEventListener("keypress", function (key) {

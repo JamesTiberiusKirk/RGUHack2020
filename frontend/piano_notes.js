@@ -1,7 +1,37 @@
 var synth = new Tone.Synth().toMaster()
 
+synth.oscillator.type = "sine";
+synth.toMaster();
 
 document.addEventListener("keydown", keyBinds, false);
+document.addEventListener("keyUp", e => {
+    switch(e.key) {
+        case "q":
+        case "2":
+        case "w":
+        case "3":
+        case "e":
+        case "4":
+        case "r":
+        case "t":
+        case "6":
+        case "y":
+        case "7":
+        case "u":
+        case "8":
+        case "i":
+        case "9":
+        case "o":
+        case "0":
+        case "p":
+        case "-":
+        case "[":
+        case "]":
+            synth.triggerRelease();
+            break;
+    }
+});
+
 
 function keyBinds(key) {
     var notes = [
@@ -28,50 +58,47 @@ function keyBinds(key) {
     ];
 
     if (key.keyCode == "81") {
-        synth.triggerAttackRelease(notes[0]);
+        synth.triggerAttack(notes[0]);
     } else if (key.keyCode == "50") {
-        synth.triggerAttackRelease(notes[1]);
+        synth.triggerAttack(notes[1]);
     } else if (key.keyCode == "87") {
-        synth.triggerAttackRelease(notes[2]);
+        synth.triggerAttack(notes[2]);
     } else if (key.keyCode == "51") {
-        synth.triggerAttackRelease(notes[3]);
+        synth.triggerAttack(notes[3]);
     } else if (key.keyCode == "69") {
-        synth.triggerAttackRelease(notes[4]);
+        synth.triggerAttack(notes[4]);
     } else if (key.keyCode == "52") {
-        synth.triggerAttackRelease(notes[5]);
+        synth.triggerAttack(notes[5]);
     } else if (key.keyCode == "82") {
-        synth.triggerAttackRelease(notes[6]);
+        synth.triggerAttack(notes[6]);
     } else if (key.keyCode == "84") {
-        synth.triggerAttackRelease(notes[7]);
+        synth.triggerAttack(notes[7]);
     } else if (key.keyCode == "54") {
-        synth.triggerAttackRelease(notes[8]);
+        synth.triggerAttack(notes[8]);
     } else if (key.keyCode == "y") {
-        synth.triggerAttackRelease(notes[9]);
+        synth.triggerAttack(notes[9]);
     } else if (key.keyCode == "55") {
-        synth.triggerAttackRelease(notes[10]);
+        synth.triggerAttack(notes[10]);
     } else if (key.keyCode == "85") {
-        synth.triggerAttackRelease(notes[11]);
+        synth.triggerAttack(notes[11]);
     } else if (key.keyCode == "73") {
-        synth.triggerAttackRelease(notes[12]);
+        synth.triggerAttack(notes[12]);
     } else if (key.keyCode == "57") {
-        synth.triggerAttackRelease(notes[13]);
+        synth.triggerAttack(notes[13]);
     } else if (key.keyCode == "79") {
-        synth.triggerAttackRelease(notes[14]);
+        synth.triggerAttack(notes[14]);
     } else if (key.keyCode == "48") {
-        synth.triggerAttackRelease(notes[15]);
+        synth.triggerAttack(notes[15]);
     } else if (key.keyCode == "80") {
-        synth.triggerAttackRelease(notes[16]);
+        synth.triggerAttack(notes[16]);
     } else if (key.keyCode == "189") {
-        synth.triggerAttackRelease(notes[17]);
+        synth.triggerAttack(notes[17]);
     } else if (key.keyCode == "219") {
-        synth.triggerAttackRelease(notes[18]);
+        synth.triggerAttack(notes[18]);
     } else if (key.keyCode == "221") {
-        synth.triggerAttackRelease(notes[19]);
+        synth.triggerAttack(notes[19]);
     } else if (key.keyCode == false) {
         return;
     }
-
-
 }
-
 
