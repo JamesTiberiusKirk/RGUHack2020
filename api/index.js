@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-
+const fUpload = require('express-fileupload');
 const { Db } = require('./db/db');
+const path = require('path');
 
 class Server {
   constructor(db, port) {
@@ -11,16 +12,21 @@ class Server {
     this.port = port;
     this.app = express();
 
-    this.app.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-refresh-token, _id');
-      res.header('Access-Control-Expose-Headers', 'x-access-token, x-refresh-token');
-      next();
-    });
+    // this.app.use((req, res, next) => {
+    //   res.header('Access-Control-Allow-Origin', '*');
+    //   next();
+    // });
+
     this.app.use(morgan('tiny'));
+    this.app.use(fUpload({
+      limits: { fileSize: 100 * 1024 * 1024 },
+      createParentPath: true
+    }));
+
     this.app.use(cors());
     this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(express.static(__dirname));
 
     this.initRoutes();
     this.initServer();
@@ -31,17 +37,33 @@ class Server {
       res.status(200).send('ok');
     });
 
+    this.app.post('/save/song', (req, res) => {
+      if (!req.files) return res.status(402).send('Missing file');
+
+      let song_id = req.header('x-id');
+      if (!song_id) return res.status(402).send('Missing id in headears');
+      let song = req.files.song;
+      let song_split = song.name.split('.');
+      let song_ext = song_split[song_split.length - 1];
+
+      song.mv(`./uploads/${song_id}.${song_ext}`);
+
+      res.sendStatus(200);
+
+    });
+
+
     this.app.post('/save', (req, res) => {
       let user = req.header('x-username');
-      let song = req.body.song;
+      // let song = req.body.song;
       let description = req.body.description;
 
       if (!user) return res.status(401).send('Missing user');
-      if (!song) return res.status(402).send('Missing song');
+      // if (!song) return res.status(402).send('Missing song');
       if (!description) return res.status(402).send('Missing description');
 
-      let sql = `INSERT INTO saves (username, saves_doc, description)\
-                 VALUES ('${user}', '${song}', '${description}');`
+      let sql = `INSERT INTO saves (username, description)\
+                 VALUES ('${user}', '${description}');`
 
       this.db.conn.query(sql, (error, result) => {
         if (error) return res.status(500).send(error);
@@ -57,7 +79,7 @@ class Server {
                 OR description LIKE '%${search}%';`
 
       if (!search) sql = `SELECT * FROM saves`;
-      
+
 
       this.db.conn.query(sql, (error, result) => {
         if (error) return res.status(500).send(error);
@@ -70,7 +92,7 @@ class Server {
       let sql = `DELETE FROM saves WHERE idsaves='${id}';`
 
       if (!id) return res.status(402).send('Missing id');
-      
+
       this.db.conn.query(sql, (error, result) => {
         if (error) return res.status(500).send(error);
         res.sendStatus(200);
@@ -93,7 +115,7 @@ class Server {
                                   description = '${description}'\               
                   WHERE idsaves=${id}`
 
-      
+
       this.db.conn.query(sql, (error, result) => {
         if (error) return res.status(500).send(error);
         res.sendStatus(200);
